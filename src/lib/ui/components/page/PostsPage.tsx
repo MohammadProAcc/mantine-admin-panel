@@ -37,7 +37,6 @@ export function PostsPage() {
         columns={columns}
         data={postsQuery.data}
         query={postsQuery}
-        totalRowCount={postsQuery.data?.length ?? 0}
       />
     </DashboardLayout>
   );

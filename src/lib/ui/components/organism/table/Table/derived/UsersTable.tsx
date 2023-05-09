@@ -1,6 +1,7 @@
 import { useGetUsers } from '$/lib/api';
 import { ReactQueryTable } from '$/lib/ui';
 import { TableColumn } from '$/lib/types';
+import { Badge, Pagination } from '@mantine/core';
 
 export function UsersTable() {
 
@@ -28,17 +29,24 @@ export function UsersTable() {
 
   return (
     <ReactQueryTable
+      columns={columns}
+      data={usersQuery.data}
+      query={usersQuery}
       selectionActions={[
         {
           text: "گزارش",
           handler: (rows, table) => console.log("Selected Rows:\n", rows),
+          buttonProps: {
+            color: "dark",
+            variant: "outline"
+          }
         },
       ]}
-      data={usersQuery.data}
-      columns={columns}
-      query={usersQuery}
-      totalRowCount={usersQuery.data?.length ?? 0}
       crud={{
+        create: {
+          buttonText: 'افزودن کاربر',
+          href: '/users/create',
+        },
         delete: {
           handler: (row, table) =>
             console.log("row:\n", row, "table:\n", table),
@@ -51,5 +59,6 @@ export function UsersTable() {
         },
       }}
     />
+    // TODO: `Pagination` placeholder
   )
 }

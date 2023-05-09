@@ -3,3 +3,4 @@ export * from "./SettingsPage";
 export * from "./HomePage"
 export * from "./UsersPage"
 export * from "./PostsPage"
+export * from "./CreateUserPage"

@@ -1,2 +1,2 @@
-export * from "./DashboardLayout/DashboardLayout"
+export * from "./DashboardLayout"
 export * from "./RouterTransition"

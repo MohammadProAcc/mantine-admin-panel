@@ -12,11 +12,12 @@ import Link from "next/link";
 import { ReactNode, useMemo, useState } from "react";
 import { v4 } from "uuid";
 
-interface CRUD {
+interface Delete {
   handler: (row: any, table: any) => unknown;
 }
-interface Create extends CRUD {
+interface Create {
   buttonText: string;
+  href: string;
   el?: ReactNode;
 }
 interface Update {
@@ -34,12 +35,11 @@ interface SelectionAction {
 interface TableProps {
   columns: MRT_ColumnDef<any>[];
   data: any[];
-  totalRowCount: number;
   query: UseQueryResult<any>;
   crud?: {
     create?: Create;
     update?: Update;
-    delete?: CRUD;
+    delete?: Delete;
     read?: Read;
   };
   selectionActions?: SelectionAction[];
@@ -123,13 +123,14 @@ export const ReactQueryTable = (props: TableProps) => {
 
             {props.crud?.create &&
               (props.crud.create.el ?? (
-                <Button
-                  color="teal"
-                  onClick={props.crud.create.handler as any}
-                  variant="filled"
-                >
-                  {props.crud.create.buttonText}
-                </Button>
+                <Link href={props.crud?.create.href}>
+                  <Button
+                    color="teal"
+                    variant="filled"
+                  >
+                    {props.crud.create.buttonText}
+                  </Button>
+                </Link>
               ))}
             <Tooltip withArrow label="Refresh Data">
               <ActionIcon onClick={() => props.query.refetch()}>
@@ -139,7 +140,6 @@ export const ReactQueryTable = (props: TableProps) => {
           </div>
         );
       }}
-      rowCount={props.totalRowCount ?? 0}
       state={{
         columnFilters,
         globalFilter,

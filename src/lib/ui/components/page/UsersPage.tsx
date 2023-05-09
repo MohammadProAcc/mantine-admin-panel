@@ -1,6 +1,4 @@
-import { DashboardLayout } from "../layout";
-import { UsersTable } from "../organism/table";
-import { HeaderPortal } from "../layout/DashboardLayout/Header/HeaderPortal";
+import { DashboardLayout, UsersTable, HeaderPortal } from "$/lib/ui";
 import { Badge } from "@mantine/core";
 
 export function UsersPage() {
