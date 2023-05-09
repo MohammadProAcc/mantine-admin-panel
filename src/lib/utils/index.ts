@@ -1,1 +1,1 @@
-export * from "./rtl-cache"
+export * from "./functions"

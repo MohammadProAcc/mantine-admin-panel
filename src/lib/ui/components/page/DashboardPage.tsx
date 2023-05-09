@@ -1,5 +1,5 @@
 import { DashboardLayout } from "../layout";
 
 export function DashboardPage() {
-  return <DashboardLayout>Dashboar Page</DashboardLayout>;
+  return <DashboardLayout title="داشبورد">Dashboard Page</DashboardLayout>;
 }
