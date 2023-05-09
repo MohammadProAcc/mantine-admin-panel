@@ -4,7 +4,6 @@ import {
   Navbar,
   Header,
   Aside,
-  Text,
   MediaQuery,
   Burger,
   useMantineTheme,
@@ -81,9 +80,13 @@ export function DashboardLayout(props: DashboardLayoutProps) {
           </Footer>
         }
         header={
-          <Header height={{ base: 50, md: 70 }} p="md">
+          <Header height={{ base: 50, md: 70 }} p={{ md: "md", sm: 0 }}>
             <div
-              style={{ display: "flex", alignItems: "center", height: "100%" }}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                height: "100%"
+              }}
             >
               <MediaQuery largerThan="sm" styles={{ display: "none" }}>
                 <Burger

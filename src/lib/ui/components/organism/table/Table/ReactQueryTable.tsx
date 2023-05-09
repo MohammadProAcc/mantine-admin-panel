@@ -45,7 +45,7 @@ interface TableProps {
   selectionActions?: SelectionAction[];
 }
 
-export const Table = (props: TableProps) => {
+export const ReactQueryTable = (props: TableProps) => {
   const [columnFilters, setColumnFilters] = useState<MRT_ColumnFiltersState>(
     []
   );
@@ -69,13 +69,13 @@ export const Table = (props: TableProps) => {
       displayColumnDefOptions={
         isActionable
           ? {
-              "mrt-row-actions": {
-                header: "فعالیت ها",
-                mantineTableHeadCellProps: {
-                  align: "center",
-                },
+            "mrt-row-actions": {
+              header: "فعالیت ها",
+              mantineTableHeadCellProps: {
+                align: "center",
               },
-            }
+            },
+          }
           : {}
       }
       columns={columns}
@@ -87,9 +87,9 @@ export const Table = (props: TableProps) => {
       mantineToolbarAlertBannerProps={
         props.query.isError
           ? {
-              color: "red",
-              children: "Error loading data",
-            }
+            color: "red",
+            children: "Error loading data",
+          }
           : undefined
       }
       onColumnFiltersChange={setColumnFilters}
@@ -152,43 +152,43 @@ export const Table = (props: TableProps) => {
       renderRowActions={
         isActionable
           ? ({ row, table }) => (
-              <Box sx={{ display: "flex", gap: "16px" }}>
-                {isUpdatable ? (
-                  <Link href={props.crud?.update?.href ?? ""}>
-                    <Tooltip withArrow position="left" label="ویرایش">
-                      <ActionIcon>
-                        <IconEdit />
-                      </ActionIcon>
-                    </Tooltip>
-                  </Link>
-                ) : (
-                  <></>
-                )}
-                {isDeletable ? (
-                  <Tooltip withArrow position="right" label="حذف">
-                    <ActionIcon
-                      color="red"
-                      onClick={() => props.crud?.delete?.handler(row, table)}
-                    >
-                      <IconTrash />
+            <Box sx={{ display: "flex", gap: "16px" }}>
+              {isUpdatable ? (
+                <Link href={props.crud?.update?.href ?? ""}>
+                  <Tooltip withArrow position="left" label="ویرایش">
+                    <ActionIcon>
+                      <IconEdit />
                     </ActionIcon>
                   </Tooltip>
-                ) : (
-                  <></>
-                )}
-                {isReadable ? (
-                  <Link href={props.crud?.read?.href ?? ""}>
-                    <Tooltip withArrow position="right" label="مشاهده">
-                      <ActionIcon color="blue">
-                        <IconEye />
-                      </ActionIcon>
-                    </Tooltip>
-                  </Link>
-                ) : (
-                  <></>
-                )}
-              </Box>
-            )
+                </Link>
+              ) : (
+                <></>
+              )}
+              {isDeletable ? (
+                <Tooltip withArrow position="right" label="حذف">
+                  <ActionIcon
+                    color="red"
+                    onClick={() => props.crud?.delete?.handler(row, table)}
+                  >
+                    <IconTrash />
+                  </ActionIcon>
+                </Tooltip>
+              ) : (
+                <></>
+              )}
+              {isReadable ? (
+                <Link href={props.crud?.read?.href ?? ""}>
+                  <Tooltip withArrow position="right" label="مشاهده">
+                    <ActionIcon color="blue">
+                      <IconEye />
+                    </ActionIcon>
+                  </Tooltip>
+                </Link>
+              ) : (
+                <></>
+              )}
+            </Box>
+          )
           : undefined
       }
       enableBottomToolbar={false}

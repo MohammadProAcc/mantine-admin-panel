@@ -7,7 +7,7 @@ import { LayoutDashboard } from "tabler-icons-react";
 export function Header() {
   return (
     <$>
-      <Link href="/">
+      <Link href="/" className="header-link">
         <h1>
           {/* logo */}
           <div className="logo">
@@ -32,6 +32,11 @@ const $ = styled.div`
 
   @media ${device('max', 'md')} {
     margin: auto;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
   }
 
   h1 {

@@ -1,2 +1,2 @@
 export * from "./derived"
-export * from "./Table"
+export * from "./ReactQueryTable"

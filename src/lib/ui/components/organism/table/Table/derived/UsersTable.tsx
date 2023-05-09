@@ -1,5 +1,5 @@
 import { useGetUsers } from '$/lib/api';
-import { Table } from '../Table';
+import { ReactQueryTable } from '$/lib/ui';
 import { TableColumn } from '$/lib/types';
 
 export function UsersTable() {
@@ -27,7 +27,7 @@ export function UsersTable() {
 
 
   return (
-    <Table
+    <ReactQueryTable
       selectionActions={[
         {
           text: "گزارش",

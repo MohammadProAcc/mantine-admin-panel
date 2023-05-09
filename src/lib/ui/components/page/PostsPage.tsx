@@ -3,7 +3,7 @@ import { Badge } from "@mantine/core";
 import { DashboardLayout } from "../layout";
 import { HeaderPortal } from "../layout/DashboardLayout/Header/HeaderPortal";
 import { TableColumn } from "$/lib/types";
-import { Table } from "../organism/table";
+import { ReactQueryTable } from "../organism/table";
 
 export function PostsPage() {
   const postsQuery = useGetPosts();
@@ -33,7 +33,7 @@ export function PostsPage() {
         <Badge size="xl">پست ها</Badge>
       </HeaderPortal>
 
-      <Table
+      <ReactQueryTable
         columns={columns}
         data={postsQuery.data}
         query={postsQuery}
